@@ -65,12 +65,28 @@ struct BlankPage: View {
         NavigationView{
             ZStack {
                 Color.white
+                Image("profile")
+                    .padding(.bottom, 640.0)
+                    .padding(.leading, 220.0)
                 
                 VStack {
                     Spacer()
                     
+                    Text("Hello,")
+                        .padding(.trailing, 263.0)
+                        .padding(.top, 1)
+                        .font(.system(size: 20, weight: .bold))
+                    
+                    Text("Robin Brown")
+                        .padding(.trailing, 200.0)
+                        .padding(.bottom, 90)
+                        .font(.system(size: 20, weight: .bold))
+                    
                     // Image placeholders
+                   
+                    
                     HStack {
+                        
                         NavigationLink(destination: Timer()){
                             Image("Timer")
                                 .resizable()
