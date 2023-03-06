@@ -34,6 +34,8 @@ struct ContentView: View {
                     // Spacer to push the text to the top and keep it there
                     Spacer()
                     
+                   
+                    
                     // Next button with black background and white text
                     NavigationLink(destination: BlankPage()) {
                         Text("Next")
@@ -65,7 +67,32 @@ struct BlankPage: View {
             
             VStack {
                 Spacer()
+                
+                // Image placeholders
+                HStack {
+                    Image("Timer")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .padding(.trailing, -60.0)
+                        .frame(width: 150, height: 150)
+                    
+                    Image("chat")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 150, height: 150)
+                    
+                    Image("game")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .padding(.leading, -60.0)
+                        .frame(width: 150, height: 150)
+                }
+                .padding(.bottom, 20)
+                
+                
+                
                 Image("Group 36")
+                    .padding(.top, 70.0)
                 Rectangle()
                     .fill(Color.black)
                     .frame(width: 400, height: 310)
@@ -78,17 +105,13 @@ struct BlankPage: View {
                             .font(.system(size: 27, weight: .bold))
                             .padding(.trailing, 120.0)
                             .padding(.top, -90)
-                            
-
                     )
+                
                 Text("Coming together is a beginning, staying together is progress, and working together is success.")
                     .padding(-170.0)
                     .foregroundColor(.white)
                     .frame(width: 5)
                     .fontWeight(.medium)
-                
-               
-                   
             }
         }
     }
