@@ -65,21 +65,30 @@ struct BlankPage: View {
             
             VStack {
                 Spacer()
-                
+                Image("Group 36")
                 Rectangle()
                     .fill(Color.black)
                     .frame(width: 400, height: 310)
                     .cornerRadius(50)
-                    .padding(.bottom, -34.0)
+                    .padding(.bottom, -42.0)
                     .overlay(
                         Text("Quote of the day:")
                             .fontWeight(.bold)
                             .foregroundColor(.white)
                             .font(.system(size: 27, weight: .bold))
                             .padding(.trailing, 120.0)
-                            .padding(.bottom, 180.0)
+                            .padding(.top, -90)
+                            
 
                     )
+                Text("Coming together is a beginning, staying together is progress, and working together is success.")
+                    .padding(-170.0)
+                    .foregroundColor(.white)
+                    .frame(width: 5)
+                    .fontWeight(.medium)
+                
+               
+                   
             }
         }
     }
