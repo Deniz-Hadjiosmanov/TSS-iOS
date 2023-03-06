@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EB8FF37929B610CD00236BD9 /* Timer.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB8FF37829B610CD00236BD9 /* Timer.swift */; };
+		EB8FF37D29B61B2C00236BD9 /* CofeeBreak.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB8FF37C29B61B2C00236BD9 /* CofeeBreak.swift */; };
+		EB8FF37F29B62F1E00236BD9 /* GameOfTheDay.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB8FF37E29B62F1E00236BD9 /* GameOfTheDay.swift */; };
 		EBE8039229B52A07005F24A1 /* TSSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBE8039129B52A07005F24A1 /* TSSApp.swift */; };
 		EBE8039429B52A07005F24A1 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBE8039329B52A07005F24A1 /* ContentView.swift */; };
 		EBE8039629B52A09005F24A1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EBE8039529B52A09005F24A1 /* Assets.xcassets */; };
@@ -14,6 +17,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		EB8FF37829B610CD00236BD9 /* Timer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Timer.swift; sourceTree = "<group>"; };
+		EB8FF37C29B61B2C00236BD9 /* CofeeBreak.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CofeeBreak.swift; sourceTree = "<group>"; };
+		EB8FF37E29B62F1E00236BD9 /* GameOfTheDay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOfTheDay.swift; sourceTree = "<group>"; };
 		EBE8038E29B52A07005F24A1 /* TSS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TSS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EBE8039129B52A07005F24A1 /* TSSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TSSApp.swift; sourceTree = "<group>"; };
 		EBE8039329B52A07005F24A1 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -53,6 +59,9 @@
 			children = (
 				EBE8039129B52A07005F24A1 /* TSSApp.swift */,
 				EBE8039329B52A07005F24A1 /* ContentView.swift */,
+				EB8FF37829B610CD00236BD9 /* Timer.swift */,
+				EB8FF37C29B61B2C00236BD9 /* CofeeBreak.swift */,
+				EB8FF37E29B62F1E00236BD9 /* GameOfTheDay.swift */,
 				EBE8039529B52A09005F24A1 /* Assets.xcassets */,
 				EBE8039729B52A09005F24A1 /* Preview Content */,
 			);
@@ -137,7 +146,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EB8FF37F29B62F1E00236BD9 /* GameOfTheDay.swift in Sources */,
+				EB8FF37929B610CD00236BD9 /* Timer.swift in Sources */,
 				EBE8039429B52A07005F24A1 /* ContentView.swift in Sources */,
+				EB8FF37D29B61B2C00236BD9 /* CofeeBreak.swift in Sources */,
 				EBE8039229B52A07005F24A1 /* TSSApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

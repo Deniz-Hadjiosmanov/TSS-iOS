@@ -34,7 +34,7 @@ struct ContentView: View {
                     // Spacer to push the text to the top and keep it there
                     Spacer()
                     
-                   
+                    
                     
                     // Next button with black background and white text
                     NavigationLink(destination: BlankPage()) {
@@ -62,56 +62,62 @@ struct ContentView: View {
 
 struct BlankPage: View {
     var body: some View {
-        ZStack {
-            Color.white
-            
-            VStack {
-                Spacer()
+        NavigationView{
+            ZStack {
+                Color.white
                 
-                // Image placeholders
-                HStack {
-                    Image("Timer")
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .padding(.trailing, -60.0)
-                        .frame(width: 150, height: 150)
+                VStack {
+                    Spacer()
                     
-                    Image("chat")
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width: 150, height: 150)
+                    // Image placeholders
+                    HStack {
+                        NavigationLink(destination: Timer()){
+                            Image("Timer")
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .padding(.trailing, -60.0)
+                                .frame(width: 150, height: 150)
+                        }
+                        NavigationLink(destination: CofeeBreak()){
+                            Image("chat")
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .frame(width: 150, height: 150)
+                        }
+                        NavigationLink(destination: GameOfTheDay()){
+                            Image("game")
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .padding(.leading, -60.0)
+                                .frame(width: 150, height: 150)
+                        }
+                    }
+                    .padding(.bottom, 20)
                     
-                    Image("game")
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .padding(.leading, -60.0)
-                        .frame(width: 150, height: 150)
+                    
+                    
+                    Image("Group 36")
+                        .padding(.top, 70.0)
+                    Rectangle()
+                        .fill(Color.black)
+                        .frame(width: 400, height: 310)
+                        .cornerRadius(50)
+                        .padding(.bottom, -42.0)
+                        .overlay(
+                            Text("Quote of the day:")
+                                .fontWeight(.bold)
+                                .foregroundColor(.white)
+                                .font(.system(size: 27, weight: .bold))
+                                .padding(.trailing, 120.0)
+                                .padding(.top, -90)
+                        )
+                    
+                    Text("Coming together is a beginning, staying together is progress, and working together is success.")
+                        .padding(-170.0)
+                        .foregroundColor(.white)
+                        .frame(width: 5)
+                        .fontWeight(.medium)
                 }
-                .padding(.bottom, 20)
-                
-                
-                
-                Image("Group 36")
-                    .padding(.top, 70.0)
-                Rectangle()
-                    .fill(Color.black)
-                    .frame(width: 400, height: 310)
-                    .cornerRadius(50)
-                    .padding(.bottom, -42.0)
-                    .overlay(
-                        Text("Quote of the day:")
-                            .fontWeight(.bold)
-                            .foregroundColor(.white)
-                            .font(.system(size: 27, weight: .bold))
-                            .padding(.trailing, 120.0)
-                            .padding(.top, -90)
-                    )
-                
-                Text("Coming together is a beginning, staying together is progress, and working together is success.")
-                    .padding(-170.0)
-                    .foregroundColor(.white)
-                    .frame(width: 5)
-                    .fontWeight(.medium)
             }
         }
     }
