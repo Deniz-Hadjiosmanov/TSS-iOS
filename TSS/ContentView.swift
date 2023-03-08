@@ -88,7 +88,7 @@ struct BlankPage: View {
                     
                     HStack {
                         
-                        NavigationLink(destination: Timer()){
+                        NavigationLink(destination: TimerView()){
                             Image("Timer")
                                 .resizable()
                                 .aspectRatio(contentMode: .fit)

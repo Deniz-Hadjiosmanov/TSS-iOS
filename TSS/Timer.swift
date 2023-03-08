@@ -1,8 +1,9 @@
-
-
 import SwiftUI
 
-struct Timer: View {
+struct TimerView: View {
+    
+    @State private var remainingTime = 300 // 24 hours in seconds
+    
     var body: some View {
         NavigationView {
             ZStack {
@@ -40,15 +41,20 @@ struct Timer: View {
                         .padding(.top, 105.0)
                         .padding(.bottom, -50)
                     
-                        
                     
-                    Rectangle()
-                        .fill(Color.black)
-                        .frame(width: 340, height: 85)
-                        .cornerRadius(30)
+                    // Countdown timer
+                    Text(String(format: "%02d:%02d:%02d", remainingTime / 3600, (remainingTime % 3600) / 60, remainingTime % 60))
+                        .font(.system(size: 40, weight: .bold))
+                        .foregroundColor(.white)
+                        .padding(.all, 10.0)
+                        .background(Color.black)
+                        .cornerRadius(10.0)
                         .padding(.top, 110.0)
                         .padding(.bottom, 100.0)
-                        
+                        .onAppear {
+                            startTimer()
+                        }
+                    
                     Image("confetti")
                         .padding(.bottom, -300.0)
                     
@@ -60,11 +66,19 @@ struct Timer: View {
         }
     }
     
-    
-    
-    struct Timer_Previews: PreviewProvider {
-        static var previews: some View {
-            Timer()
+    private func startTimer() {
+        let timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { _ in
+            if remainingTime > 0 {
+                remainingTime -= 1
+            }
         }
+        timer.tolerance = 0.1
+    }
+    
+}
+
+struct Timer_Previews: PreviewProvider {
+    static var previews: some View {
+        TimerView()
     }
 }
