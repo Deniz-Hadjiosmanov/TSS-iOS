@@ -13,7 +13,7 @@ struct ContentView: View {
                     Text("Together")
                         .font(.system(size: 30, weight: .bold))
                         .foregroundColor(.black)
-                        .padding(.top, 50.0)
+                        .padding(.top, 60.0)
                     
                     // HStack containing "we achieve" text and gradient "more" text
                     HStack {
@@ -53,6 +53,7 @@ struct ContentView: View {
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .background(Color.white)
+                    .padding(.top, 50.0)
             }
             .navigationBarTitle("")
             .navigationBarHidden(true)
