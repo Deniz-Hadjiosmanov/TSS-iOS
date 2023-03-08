@@ -1,8 +1,9 @@
 import SwiftUI
+import UIKit
 
 struct TimerView: View {
     
-    @State private var remainingTime = 400 // 24 hours in seconds
+    @State private var remainingTime = 10 // 24 hours in seconds
     
     var body: some View {
         NavigationView {
@@ -67,13 +68,19 @@ struct TimerView: View {
     }
     
     private func startTimer() {
-        let timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { _ in
+        var timer: Timer!
+        timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { _ in
             if remainingTime > 0 {
                 remainingTime -= 1
+            } else {
+                let generator = UINotificationFeedbackGenerator()
+                generator.notificationOccurred(.success)
+                timer.invalidate()
             }
         }
         timer.tolerance = 0.1
     }
+
     
 }
 
