@@ -2,7 +2,7 @@ import SwiftUI
 
 struct TimerView: View {
     
-    @State private var remainingTime = 300 // 24 hours in seconds
+    @State private var remainingTime = 400 // 24 hours in seconds
     
     var body: some View {
         NavigationView {
