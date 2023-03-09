@@ -5,6 +5,7 @@ struct GameOfTheDay: View {
     
     @State private var remainingTime = 10 // 24 hours in seconds
     @State private var isTimerRunning = false
+    @State private var isWheelSpinning = false
     
     var body: some View {
         NavigationView {
@@ -14,8 +15,8 @@ struct GameOfTheDay: View {
                 
                 // VStack containing text and a spacer
                 Image("profile")
-                    .padding(.bottom, 640.0)
-                    .padding(.leading, 220.0)
+                    .padding(.bottom, 650.0)
+                    .padding(.leading, 280.0)
                 VStack {
                     // Text with custom font, black color, and padding to position it below top black block
                     Text("Play the")
@@ -39,17 +40,29 @@ struct GameOfTheDay: View {
                             )
                     }
                     
-                   
-                    
-                   
                 }
-                .padding(.bottom, 580.0)
                 
+                .padding(.bottom, 1030.0)
+                
+                Image("Wheel")
+                    .rotationEffect(isWheelSpinning ? .degrees(360) : .zero)
+                    .animation(Animation.linear(duration: 1).repeatForever(autoreverses: (1 != 0)))
+                
+                Button(action: {
+                    isWheelSpinning.toggle()
+                }) {
+                    Text("Spin the wheel")
+                        .font(.system(size: 20, weight: .semibold))
+                        .foregroundColor(.white)
+                        .padding(.all, 14)
+                        .padding(.horizontal, 10.0)
+                        .background(Color.black)
+                        .cornerRadius(10)
+                        .padding(.top, 560.0)
+                }
             }
         }
     }
-    
-    
 }
 
 struct GameOfTheDay_Previews: PreviewProvider {
