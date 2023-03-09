@@ -4,14 +4,18 @@ import UIKit
 struct TimerView: View {
     
     @State private var remainingTime = 10 // 24 hours in seconds
+    @State private var isTimerRunning = false
     
     var body: some View {
         NavigationView {
             ZStack {
-                // White background
+            
                 Color.white
                 
                 // VStack containing text and a spacer
+                Image("profile")
+                    .padding(.bottom, 640.0)
+                    .padding(.leading, 250.0)
                 VStack {
                     // Text with custom font, black color, and padding to position it below top black block
                     Text("Time until")
@@ -34,6 +38,7 @@ struct TimerView: View {
                                     .mask(Text("happy hour").font(.title))
                             )
                     }
+                    
                     
                     Text("The next happy hour begins in:")
                         .font(.system(size: 23, weight: .medium))
@@ -58,8 +63,6 @@ struct TimerView: View {
                     
                     Image("confetti")
                         .padding(.bottom, -300.0)
-                    
-                    
                 }
                 .padding(.bottom, 580.0)
                 
@@ -68,19 +71,30 @@ struct TimerView: View {
     }
     
     private func startTimer() {
+        isTimerRunning = true
         var timer: Timer!
         timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { _ in
             if remainingTime > 0 {
                 remainingTime -= 1
             } else {
-                let generator = UINotificationFeedbackGenerator()
-                generator.notificationOccurred(.success)
                 timer.invalidate()
+                startVibration()
             }
         }
         timer.tolerance = 0.1
     }
-
+    
+    private func startVibration() {
+        let generator = UINotificationFeedbackGenerator()
+        generator.prepare()
+        generator.notificationOccurred(.success)
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+            if isTimerRunning {
+                startVibration()
+            }
+        }
+    }
     
 }
 

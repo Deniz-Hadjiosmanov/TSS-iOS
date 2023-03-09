@@ -4,7 +4,7 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
             ZStack {
-                // White background
+              
                 Color.white
                 
                 // VStack containing text and a spacer
@@ -15,7 +15,7 @@ struct ContentView: View {
                         .foregroundColor(.black)
                         .padding(.top, 60.0)
                     
-                    // HStack containing "we achieve" text and gradient "more" text
+                 
                     HStack {
                         Text("we achieve ")
                             .font(.system(size: 30, weight: .bold))
@@ -23,8 +23,7 @@ struct ContentView: View {
                             .foregroundColor(.black)
                         
                         Text("more")
-                            .font(.title) // increased font size of "more"
-                            .foregroundColor(.clear)
+                            .font(.title)                             .foregroundColor(.clear)
                             .background(
                                 LinearGradient(gradient: Gradient(colors: [.red, .yellow, .green]), startPoint: .leading, endPoint: .trailing)
                                     .mask(Text("more").font(.title))
@@ -68,7 +67,7 @@ struct BlankPage: View {
                 Color.white
                 Image("profile")
                     .padding(.bottom, 640.0)
-                    .padding(.leading, 220.0)
+                    .padding(.leading, 250.0)
                 
                 VStack {
                     Spacer()
