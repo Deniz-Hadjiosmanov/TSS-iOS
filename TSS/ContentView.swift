@@ -54,8 +54,7 @@ struct ContentView: View {
                     .background(Color.white)
                     .padding(.top, 50.0)
             }
-            .navigationBarTitle("")
-            .navigationBarHidden(true)
+            
         }
     }
 }

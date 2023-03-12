@@ -3,27 +3,24 @@ import UIKit
 
 struct TimerView: View {
     
-    @State private var remainingTime = 10 // 24 hours in seconds
+    @State private var remainingTime = getRemainingTime()
     @State private var isTimerRunning = false
     
     var body: some View {
         NavigationView {
             ZStack {
-            
                 Color.white
                 
-                // VStack containing text and a spacer
-                Image("profile")
-                    .padding(.bottom, 640.0)
-                    .padding(.leading, 250.0)
                 VStack {
-                    // Text with custom font, black color, and padding to position it below top black block
+                    Image("profile")
+                        .padding(.bottom, 640.0)
+                        .padding(.leading, 250.0)
+                    
                     Text("Time until")
                         .font(.system(size: 30, weight: .bold))
                         .foregroundColor(.black)
-                        .padding(.top, 470.0)
+                        .padding(.top, 0.0)
                     
-                    // HStack containing "we achieve" text and gradient "more" text
                     HStack {
                         Text("the ")
                             .font(.system(size: 30, weight: .bold))
@@ -31,14 +28,13 @@ struct TimerView: View {
                             .foregroundColor(.black)
                         
                         Text("happy hour")
-                            .font(.title) // increased font size of "more"
+                            .font(.title)
                             .foregroundColor(.clear)
                             .background(
                                 LinearGradient(gradient: Gradient(colors: [.red, .yellow, .green]), startPoint: .leading, endPoint: .trailing)
                                     .mask(Text("happy hour").font(.title))
                             )
                     }
-                    
                     
                     Text("The next happy hour begins in:")
                         .font(.system(size: 23, weight: .medium))
@@ -47,8 +43,6 @@ struct TimerView: View {
                         .padding(.top, 105.0)
                         .padding(.bottom, -50)
                     
-                    
-                    // Countdown timer
                     Text(String(format: "%02d:%02d:%02d", remainingTime / 3600, (remainingTime % 3600) / 60, remainingTime % 60))
                         .font(.system(size: 40, weight: .bold))
                         .foregroundColor(.white)
@@ -57,16 +51,16 @@ struct TimerView: View {
                         .cornerRadius(10.0)
                         .padding(.top, 110.0)
                         .padding(.bottom, 100.0)
-                        .onAppear {
-                            startTimer()
-                        }
                     
                     Image("confetti")
-                        .padding(.bottom, -300.0)
+                        .padding(.bottom, 30.0)
                 }
                 .padding(.bottom, 580.0)
                 
             }
+        }
+        .onAppear {
+            startTimer()
         }
     }
     
@@ -74,9 +68,9 @@ struct TimerView: View {
         isTimerRunning = true
         var timer: Timer!
         timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { _ in
-            if remainingTime > 0 {
-                remainingTime -= 1
-            } else {
+            remainingTime -= 1
+            
+            if remainingTime == 0 {
                 timer.invalidate()
                 startVibration()
             }
@@ -96,6 +90,22 @@ struct TimerView: View {
         }
     }
     
+    private static func getRemainingTime() -> Int {
+        let calendar = Calendar.current
+        let now = Date()
+        var components = DateComponents()
+        components.hour = 14
+        components.minute = 0
+        components.second = 0
+        
+        guard let targetDate = calendar.nextDate(after: now, matching: components, matchingPolicy: .strict) else {
+            return 0
+        }
+        
+        let remainingTime = Int(targetDate.timeIntervalSinceNow)
+        
+        return remainingTime > 0 ? remainingTime : 24 * 60 * 60 + remainingTime
+    }
 }
 
 struct Timer_Previews: PreviewProvider {
