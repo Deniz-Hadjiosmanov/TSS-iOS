@@ -94,9 +94,9 @@ struct TimerView: View {
         let calendar = Calendar.current
         let now = Date()
         var components = DateComponents()
-        components.hour = 14
+        components.hour = 0
         components.minute = 0
-        components.second = 0
+        components.second = 10
         
         guard let targetDate = calendar.nextDate(after: now, matching: components, matchingPolicy: .strict) else {
             return 0
