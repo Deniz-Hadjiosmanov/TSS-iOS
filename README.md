@@ -1,5 +1,6 @@
 
-![cover](https://git.fhict.nl/I485519/tss-project/-/raw/main/thecover.png) 
+![cover](https://git.fhict.nl/I485519/tss-project/-/raw/main/forcover.png) 
+
 
 # The Social Spot
 We are a mobile application for efficient remote work that aims to improve the experience of employees by including entertainment and socialization into their workday.
@@ -16,6 +17,3 @@ If you want to preview the prototype, use this link <a href="https://www.figma.c
 
 ##### Coffee breaks
 
-### Duo
-* <a href="https://git.fhict.nl/I485519">Martin Grigorov</a>
-* <a href="https://git.fhict.nl/I477928">Deniz Hadjiosmanov</a>
