@@ -93,7 +93,7 @@ struct BlankPage: View {
                                 .padding(.trailing, -60.0)
                                 .frame(width: 150, height: 150)
                         }
-                        NavigationLink(destination: CofeeBreak()){
+                        NavigationLink(destination: CoffeeBreak()){
                             Image("chat")
                                 .resizable()
                                 .aspectRatio(contentMode: .fit)

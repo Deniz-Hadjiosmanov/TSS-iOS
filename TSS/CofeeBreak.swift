@@ -1,8 +1,9 @@
 import SwiftUI
 
-struct CofeeBreak: View {
+struct CoffeeBreak: View {
     
     @State private var isButtonPressed = false
+    @State private var isPopupVisible = false
     
     var body: some View {
         NavigationView {
@@ -60,7 +61,9 @@ struct CofeeBreak: View {
                 
                 Button(action: {
                     self.isButtonPressed = true
-                    // handle button action here
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+                        self.isPopupVisible = true
+                    }
                 }) {
                     Text("Start")
                         .font(.system(size: 20, weight: .semibold))
@@ -71,13 +74,62 @@ struct CofeeBreak: View {
                         .cornerRadius(10)
                         .padding(.top, 600.0)
                 }
+                
+                if isPopupVisible {
+                    Rectangle()
+                        .fill(Color.white)
+                        .frame(width: 300, height: 400)
+                        .cornerRadius(20)
+                        .shadow(radius: 10)
+                        .overlay(
+                            VStack {
+                                Text("Your coffee partner is:\n Elena")
+                                    .font(.system(size: 25, weight: .bold))
+                                    .foregroundColor(.black)
+                                    .multilineTextAlignment(.center)
+                                    .padding(.top, 50.0)
+                                Image("cup")
+                                    .frame(width: 100.0, height: 100.0)
+                                    
+                                Spacer()
+                                Text("Suggested topic:")
+                                    .font(.system(size: 25, weight: .bold))
+                                    .foregroundColor(.black)
+                                    .multilineTextAlignment(.center)
+                                Text("Would you rather?")
+                                    .font(.title) // increased font size of "more"
+                                    .foregroundColor(.clear)
+                                    .background(
+                                        LinearGradient(gradient: Gradient(colors: [.red, .yellow, .green]), startPoint: .leading, endPoint: .trailing)
+                                            .mask(Text("Would you rather?").font(.title))
+                                    )
+                                Spacer()
+                                Button(action: {
+                                    self.isPopupVisible = false
+                                }) {
+                                    Text("OK")
+                                        .font(.system(size: 20, weight: .semibold))
+                                        .foregroundColor(.white)
+                                        .padding(.all, 10)
+                                        .padding(.horizontal, 50.0)
+                                        .background(Color.black)
+                                        .cornerRadius(10)
+                                }
+                                Spacer()
+                            }
+                        )
+                        .onTapGesture {
+                            self.isPopupVisible = false
+                        }
+                }
             }
         }
     }
 }
 
-struct CofeeBreak_Previews: PreviewProvider {
+struct CoffeeBreak_Previews: PreviewProvider {
     static var previews: some View {
-        CofeeBreak()
+        CoffeeBreak()
+        
     }
 }
