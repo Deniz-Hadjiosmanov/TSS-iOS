@@ -11,21 +11,21 @@ struct GameOfTheDay: View {
     var body: some View {
         NavigationView {
             ZStack {
-                // White background
+              
                 Color.white
                 
-                // VStack containing text and a spacer
+                
                 Image("profile")
                     .padding(.bottom, 650.0)
                     .padding(.leading, 280.0)
                 VStack {
-                    // Text with custom font, black color, and padding to position it below top black block
+                    
                     Text("Play the")
                         .font(.system(size: 30, weight: .bold))
                         .foregroundColor(.black)
                         .padding(.top, 470.0)
                     
-                    // HStack containing "we achieve" text and gradient "more" text
+                   
                     HStack {
                         Text(" ")
                             .font(.system(size: 30, weight: .bold))
@@ -33,7 +33,7 @@ struct GameOfTheDay: View {
                             .foregroundColor(.black)
                         
                         Text("game of the day")
-                            .font(.title) // increased font size of "more"
+                            .font(.title) 
                             .foregroundColor(.clear)
                             .background(
                                 LinearGradient(gradient: Gradient(colors: [.red, .yellow, .green]), startPoint: .leading, endPoint: .trailing)

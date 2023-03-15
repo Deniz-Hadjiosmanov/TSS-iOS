@@ -81,26 +81,26 @@ struct BlankPage: View {
                         .padding(.bottom, 90)
                         .font(.system(size: 20, weight: .bold))
                     
-                    // Image placeholders
+                   
                    
                     
                     HStack {
                         
                         NavigationLink(destination: TimerView()){
-                            Image("Timer")
+                            Image("happyhour")
                                 .resizable()
                                 .aspectRatio(contentMode: .fit)
                                 .padding(.trailing, -60.0)
                                 .frame(width: 150, height: 150)
                         }
                         NavigationLink(destination: CoffeeBreak()){
-                            Image("chat")
+                            Image("coffeebreak")
                                 .resizable()
                                 .aspectRatio(contentMode: .fit)
                                 .frame(width: 150, height: 150)
                         }
                         NavigationLink(destination: GameOfTheDay()){
-                            Image("game")
+                            Image("gameoftheday")
                                 .resizable()
                                 .aspectRatio(contentMode: .fit)
                                 .padding(.leading, -60.0)
