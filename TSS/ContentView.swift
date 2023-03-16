@@ -135,6 +135,7 @@ struct BlankPage: View {
                 }
             }
         }
+        .navigationBarHidden(true)
     }
 }
 

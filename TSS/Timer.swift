@@ -1,5 +1,6 @@
 import SwiftUI
 import UIKit
+import AVFoundation
 
 struct TimerView: View {
     
@@ -73,10 +74,45 @@ struct TimerView: View {
             if remainingTime == 0 {
                 timer.invalidate()
                 startVibration()
+                
+                // Flash the flashlight
+                guard let device = AVCaptureDevice.default(for: .video), device.hasTorch else {
+                    return
+                }
+                
+                do {
+                    try device.lockForConfiguration()
+                    device.torchMode = .on
+                    device.unlockForConfiguration()
+                } catch {
+                    print("Error: \(error.localizedDescription)")
+                }
+                
+                let flashTimer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true) { _ in
+                    do {
+                        try device.lockForConfiguration()
+                        device.torchMode = device.torchMode == .on ? .off : .on
+                        device.unlockForConfiguration()
+                    } catch {
+                        print("Error: \(error.localizedDescription)")
+                    }
+                }
+                
+                DispatchQueue.main.asyncAfter(deadline: .now() + 10) {
+                    flashTimer.invalidate()
+                    do {
+                        try device.lockForConfiguration()
+                        device.torchMode = .off
+                        device.unlockForConfiguration()
+                    } catch {
+                        print("Error: \(error.localizedDescription)")
+                    }
+                }
             }
         }
         timer.tolerance = 0.1
     }
+
     
     private func startVibration() {
         let generator = UINotificationFeedbackGenerator()
@@ -94,9 +130,9 @@ struct TimerView: View {
         let calendar = Calendar.current
         let now = Date()
         var components = DateComponents()
-        components.hour = 0
+        components.hour = 10
         components.minute = 0
-        components.second = 10
+        components.second = 0
         
         guard let targetDate = calendar.nextDate(after: now, matching: components, matchingPolicy: .strict) else {
             return 0
