@@ -41,7 +41,7 @@ struct CoffeeBreak: View {
                     Spacer()
                         .padding(.top, 40.0)
                 
-                    ZStack(alignment: .top) { // Aligns the images at the top
+                    ZStack(alignment: .top) {
                         Image("breaks")
                             .resizable()
                             .aspectRatio(contentMode: .fill)
@@ -76,15 +76,15 @@ struct CoffeeBreak: View {
                             }
                             
                             if isPopupVisible {
-                                // Dimming overlay
+                            
                                 Color.black.opacity(0.4)
                                     .edgesIgnoringSafeArea(.all)
                                 
-                                // Background blur effect
+                                
                                 VisualEffectView(effect: UIBlurEffect(style: .systemUltraThinMaterial))
                                     .edgesIgnoringSafeArea(.all)
                                 
-                                // Popup content
+                                
                                 VStack {
                                     Text("Your coffee partner is:\nElena")
                                         .font(.system(size: 25, weight: .bold))
@@ -103,7 +103,7 @@ struct CoffeeBreak: View {
                                         .multilineTextAlignment(.center)
                                     
                                     Text("Would you rather?")
-                                        .font(.title) // increased font size of "more"
+                                        .font(.title) 
                                         .foregroundColor(.clear)
                                         .background(
                                             LinearGradient(gradient: Gradient(colors: [.red, .yellow, .green]), startPoint: .leading, endPoint: .trailing)

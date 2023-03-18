@@ -2,7 +2,7 @@ import SwiftUI
 
 struct GameOfTheDay: View {
 
-    @State private var remainingTime = 10 // 24 hours in seconds
+    @State private var remainingTime = 10
     @State private var isTimerRunning = false
     @State private var isWheelSpinning = false
     @State private var spinAngle: Double = 0
@@ -49,7 +49,7 @@ struct GameOfTheDay: View {
                     .rotationEffect(.degrees(spinAngle))
                     .animation(Animation.easeInOut(duration: 2.0).repeatCount(isWheelSpinning ? .max : 0, autoreverses: false))
                     .onAppear {
-                        spinAngle = 0.0 // set initial value of spinAngle to 0
+                        spinAngle = 0.0
                     }
                 
                 Button(action: {
@@ -63,8 +63,8 @@ struct GameOfTheDay: View {
                                 timer = nil
                                 let stopAngle = Double.random(in: 0...360)
                                 let cycles = Int.random(in: 4...10)
-                                let totalSpinAngle = 360 * Double(cycles) - stopAngle // subtract stopAngle instead of adding it
-                                spinAngle = totalSpinAngle >= 0 ? totalSpinAngle : 360 * Double(cycles) + stopAngle // ensure spinAngle is always positive
+                                let totalSpinAngle = 360 * Double(cycles) - stopAngle
+                                spinAngle = totalSpinAngle >= 0 ? totalSpinAngle : 360 * Double(cycles) + stopAngle
                             }
                         }
                     }
@@ -79,7 +79,7 @@ struct GameOfTheDay: View {
                         .padding(.top, 560.0)
                 }
 
-                // Little black line
+                
                 Rectangle()
                     .frame(width: 50, height: 9)
                     .foregroundColor(.black)

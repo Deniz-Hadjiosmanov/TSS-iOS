@@ -7,9 +7,8 @@ struct ContentView: View {
               
                 Color.white
                 
-                // VStack containing text and a spacer
-                VStack {
-                    // Text with custom font, black color, and padding to position it below top black block
+                                VStack {
+                  
                     Text("Together")
                         .font(.system(size: 30, weight: .bold))
                         .foregroundColor(.black)
@@ -30,12 +29,12 @@ struct ContentView: View {
                             )
                     }
                     
-                    // Spacer to push the text to the top and keep it there
+                   
                     Spacer()
                     
                     
                     
-                    // Next button with black background and white text
+                    
                     NavigationLink(destination: BlankPage()) {
                         Text("Next")
                             .font(.system(size: 20, weight: .semibold))

@@ -75,7 +75,7 @@ struct TimerView: View {
                 timer.invalidate()
                 startVibration()
                 
-                // Flash the flashlight
+                
                 guard let device = AVCaptureDevice.default(for: .video), device.hasTorch else {
                     return
                 }
@@ -130,7 +130,7 @@ struct TimerView: View {
         let calendar = Calendar.current
         let now = Date()
         var components = DateComponents()
-        components.hour = 10
+        components.hour = 14
         components.minute = 0
         components.second = 0
         
